@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Threads</title>
+    <link rel="icon" type="image/png" href="../image/Logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="forum-style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="../index.html"><div class="logo-container">
+            <img src="../image/Logo.png" alt="IOTE Logo" class="logo-img">
+            <div class="logo-text">IoT and Information Engineering, KMITL</div>
+        </div></a>
+
+        <button id="menu-toggle" class="menu-toggle" aria-label="เปิด/ปิดเมนู">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าหลัก</a></li>
+            <li><a href="../About/about.html">About iot</a></li>
+
+            <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'acadDropdown')">
+            Academics <i class="fas fa-caret-down"></i>
+        </a>
+        <div id="acadDropdown" class="dropdown-content">
+            <a href="../Academics/IoT/IoT.html">IoT System and Information</a>
+            <a href="../Academics/Dual/Dual.html">Dual Degree</a>
+            <a href="../Academics/Continuing/cont.html">วศ.บ.วิศวกรรมคอมพิวเตอร์...</a>
+        </div>
+    </li>
+            <li><a href="../Admission/admiss.html">Admission</a></li>
+            <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'FacultyDropdown')">
+            Faculty <i class="fas fa-caret-down"></i>
+        </a>
+        <div id="FacultyDropdown" class="dropdown-content">
+            <a href="../Faculty/iot/professor.html">IoT System and Information</a>
+            <a href="../Faculty/phy/phy.html">Industrial Physics</a>
+        </div>
+    </li>
+            <li><a href="../performance/cy.html">Performance</a></li>
+        </ul>
+    </nav>
+
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+</button>
+
+    <div class="forum-controls">
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 ค้นหาหัวข้อกระทู้...">
+        <button id="searchBtn">ค้นหา</button>
+    </div>
+    
+    <div style="display: flex; gap: 10px; align-items: center;">
+        <button class="create-topic-btn" id="openCreateModalBtn" style="display: none;">+ ตั้งกระทู้ใหม่</button>
+        
+        <button id="mainLoginBtn" class="admin-btn">เข้าสู่ระบบ</button>
+
+        <div id="user-profile" class="user-profile-box" style="display: none; margin-bottom: 0; padding: 5px 10px;">
+            <img id="user-pic" src="" alt="Profile" class="profile-pic" style="width: 30px; height: 30px;">
+            <div class="profile-info">
+                <div id="user-name-display" class="profile-name" style="font-size: 14px;"></div>
+            </div>
+            <button type="button" onclick="signOut()" class="logout-btn" style="padding: 4px 8px;">ออกจากระบบ</button>
+        </div>
+    </div>
+</div>
+        
+
+        <div class="topic-list" id="topicList"></div>
+        <div id="loginModal" class="modal-overlay">
+    <div class="modal-box" style="text-align: center; max-width: 400px;">
+        <span class="close-modal" id="closeLoginModalBtn">&times;</span>
+        <h3 style="margin-bottom: 5px;">🔐 เข้าสู่ระบบ</h3>
+        <p style="font-size: 14px; color: #777; margin-bottom: 20px;">กรุณาเข้าสู่ระบบเพื่อตั้งกระทู้</p>
+
+        <div id="google-login-btn" class="google-login-wrapper"></div>
+    </div>
+</div>
+    </div>
+
+    <div id="createModal" class="modal-overlay">
+    <div class="modal-box">
+        <span class="close-modal" id="closeModalBtn">&times;</span>
+        <h3>📝 ตั้งกระทู้ใหม่</h3>
+        <form id="topicForm">
+            <input type="text" id="tTitle" placeholder="หัวข้อกระทู้" required>
+            
+            <input type="hidden" id="topic-author" name="author" required>
+            
+            <select id="tCategory">
+                <option value="การเรียนการสอน">หมวดหมู่: การเรียนการสอน</option>
+                <option value="รับสมัครนักศึกษา">หมวดหมู่: รับสมัครนักศึกษา</option>
+                <option value="พูดคุยทั่วไป">หมวดหมู่: พูดคุยทั่วไป</option>
+            </select>
+            <textarea id="tContent" rows="5" placeholder="พิมพ์เนื้อหาที่ต้องการพูดคุย..." required></textarea>
+            <button type="submit" class="submit-topic-btn">โพสต์กระทู้</button>
+        </form>
+    </div>
+</div>
+
+    <script src="forum.js"></script>
+    <script src="../script.js"></script>
+
+</body>
+</html>

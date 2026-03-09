@@ -1,0 +1,395 @@
+/* ดันเนื้อหาทั้งหมดของหน้าเว็บบอร์ดลงมาให้อยู่ใต้ Navbar */
+body {
+    padding-top: 100px; 
+}
+
+/* หากต้องการจัดระเบียบกล่องค้นหาเพิ่มเติม (เผื่อไว้ให้ครับ) */
+.forum-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* เผื่อหน้าจอมือถือให้มันปัดบรรทัดลงมาได้ */
+    gap: 10px;
+}
+
+/* make layout fluid and stack on small devices */
+.forum-controls {
+   display:flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   gap:10px;
+}
+
+/* ตกแต่งช่องค้นหา */
+.search-box {
+    flex: 1 1 300px;
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.search-box input {
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+.search-box button {
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+/* ปุ่มตั้งกระทู้ใหม่ */
+.create-topic-btn {
+    background-color: #f37b21;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(243, 123, 33, 0.3);
+}
+.create-topic-btn:hover {
+    background-color: #d66819;
+    transform: translateY(-2px);
+}
+
+/* รายการกระทู้ */
+.topic-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.topic-item {
+    background: #ffffff;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.2s;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+.topic-item:hover {
+    border-color: #f37b21;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.topic-title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    color: #222;
+    cursor: pointer;
+}
+.topic-title:hover {
+    color: #f37b21;
+}
+.topic-meta {
+    font-size: 14px;
+    color: #777;
+}
+.topic-stats {
+    background: #f8f9fa;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+    white-space: nowrap;
+    border: 1px solid #eee;
+}
+
+/* 🌙 โหมดกลางคืน (Dark Mode) สำหรับหน้าเว็บบอร์ด */
+body.dark-mode .forum-container { color: #fff; }
+body.dark-mode .forum-header p { color: #aaa; }
+body.dark-mode .topic-item { background: #1a1a1a; border-color: #333; }
+body.dark-mode .topic-title { color: #eee; }
+body.dark-mode .topic-title:hover { color: #f37b21; }
+body.dark-mode .topic-stats { background: #000; border-color: #333; color: #ccc; }
+body.dark-mode .search-box input { background: #222; color: #fff; border-color: #444; }
+body.dark-mode .search-box button { background: #555; }
+
+/* ========================================= */
+/* --- ป๊อปอัปตั้งกระทู้ (Modal) --- */
+/* ========================================= */
+.modal-overlay {
+    display: none; /* ซ่อนไว้เป็นค่าเริ่มต้น */
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 2000;
+    justify-content: center; align-items: center;
+}
+.modal-overlay.active { display: flex; } /* ใช้แสดงผลเมื่อกดปุ่ม */
+
+.modal-box {
+    background: #fff; padding: 30px; border-radius: 12px;
+    width: 90%; max-width: 500px; position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+.close-modal {
+    position: absolute; top: 15px; right: 20px;
+    font-size: 24px; cursor: pointer; color: #666;
+}
+.close-modal:hover { color: #f37b21; }
+
+.modal-box input, .modal-box select, .modal-box textarea {
+    width: 100%; padding: 12px; margin-bottom: 15px;
+    border: 1px solid #ddd; border-radius: 8px;
+    font-family: inherit; box-sizing: border-box; font-size: 15px;
+}
+.submit-topic-btn {
+    width: 100%; background: #f37b21; color: white;
+    padding: 12px; border: none; border-radius: 8px;
+    font-size: 16px; font-weight: bold; cursor: pointer;
+}
+.submit-topic-btn:hover { background: #d66819; }
+
+/* 🌙 Dark Mode สำหรับ Modal */
+body.dark-mode .modal-box { background: #1a1a1a; border: 1px solid #333; }
+body.dark-mode .modal-box h3 { color: #fff; }
+body.dark-mode .modal-box input, body.dark-mode .modal-box select, body.dark-mode .modal-box textarea {
+    background: #222; color: #fff; border-color: #444;
+}
+
+/* ========================================= */
+/* --- ตกแต่งปุ่มลบและสถิติกระทู้ --- */
+/* ========================================= */
+.topic-action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.topic-replies {
+    background: #f8f9fa;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+    border: 1px solid #eee;
+}
+
+.delete-btn {
+    background-color: #ff4c4c; /* สีแดงแจ้งเตือน */
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #e60000; /* สีแดงเข้มขึ้นตอนเอาเมาส์ชี้ */
+    transform: scale(1.05);
+}
+
+/* 🌙 Dark Mode สำหรับปุ่มลบและสถิติ */
+body.dark-mode .topic-replies { background: #000; border-color: #333; color: #ccc; }
+/* (ปุ่มลบสีแดงใช้ได้ดีทั้งโหมดสว่างและมืดอยู่แล้วครับ เลยไม่ต้องแก้สีเพิ่ม) */
+
+/* ========================================= */
+/* --- ปุ่มแอดมิน (Admin Login Button) --- */
+/* ========================================= */
+.admin-btn {
+    background-color: #6c757d; /* สีเทาดูเรียบๆ ไม่แย่งความสนใจปุ่มหลัก */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.admin-btn:hover {
+    filter: brightness(0.9);
+}
+
+/* 🌙 Dark Mode สำหรับปุ่มแอดมิน */
+body.dark-mode .admin-btn { background-color: #495057; }
+/* ========================================= */
+/* --- สไตล์สำหรับระบบ Login ด้วย Google --- */
+/* ========================================= */
+
+/* จัดปุ่ม Google ให้อยู่ตรงกลางฟอร์ม */
+.google-login-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+/* กล่องแสดงโปรไฟล์ตอนล็อคอินเสร็จ */
+.user-profile-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
+    background-color: #f8f9fa; /* สีพื้นหลังสว่าง */
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.profile-pic {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #f37b21; /* ใส่ขอบสีส้มให้รูปโปรไฟล์นิดนึง */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333333;
+}
+
+.profile-status {
+    font-size: 13px;
+    color: #28a745; /* สีเขียวบอกสถานะสำเร็จ */
+    margin-top: 2px;
+}
+
+.logout-btn {
+    margin-left: auto;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* 🌙 รองรับโหมดกลางคืน (Dark Mode) สำหรับกล่องโปรไฟล์ */
+body.dark-mode .user-profile-box {
+    background-color: #2a2a2a;
+    border-color: #444444;
+}
+
+body.dark-mode .profile-name {
+    color: #ffffff; /* เปลี่ยนชื่อผู้ใช้เป็นสีขาว */
+}
+
+body.dark-mode .profile-status {
+    color: #4caf50; /* ปรับสีเขียวให้สว่างขึ้นในโหมดมืด */
+}
+
+/* ========================================= */
+/* --- จัดระเบียบหน้าจอไม่ให้ชิดขอบเกินไป --- */
+/* ========================================= */
+.forum-controls,
+.topic-list {
+    max-width: 1200px;
+    /* จำกัดความกว้างสูงสุดให้พอดีสายตา */
+    margin: 0 auto;
+    /* จัดให้อยู่กึ่งกลางหน้าจอเสมอ */
+    padding: 20px 20px;
+    /* เพิ่มช่องว่างด้านข้าง 20px (ซ้าย-ขวา) ไม่ให้ชิดขอบจอ */
+}
+
+/* ควบคุมตำแหน่งกล่องค้นหาและปุ่มต่างๆ */
+.forum-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* ========================================= */
+/* --- ตกแต่งกล่องค้นหา (Search Box) ให้สวยขึ้น --- */
+/* ========================================= */
+.search-box {
+    flex: 1 1 300px;
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    /* ทำให้กล่องโค้งมนและดูมีมิติ */
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #ddd;
+    overflow: hidden;
+    /* สำคัญ: เพื่อให้ขอบโค้งตัดกับปุ่มและช่องกรอกพอดี */
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+/* เอฟเฟกต์ตอนกดพิมพ์ข้อความ กล่องจะเรืองแสงสีส้ม */
+.search-box:focus-within {
+    border-color: #f37b21;
+    box-shadow: 0 4px 15px rgba(243, 123, 33, 0.2);
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 20px;
+    font-size: 15px;
+    border: none;
+    /* เอาขอบเหลี่ยมๆ เดิมออก */
+    outline: none;
+    /* เอาเส้นกรอบตอนคลิกออก */
+    background: transparent;
+    font-family: 'Prompt', sans-serif;
+}
+
+.search-box button {
+    padding: 12px 25px;
+    font-size: 15px;
+    background-color: #f37b21;
+    /* ใช้สีส้มธีมเว็บ */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+    font-family: 'Prompt', sans-serif;
+}
+
+.search-box button:hover {
+    background-color: #d66819;
+    /* สีเข้มขึ้นตอนเอาเมาส์ชี้ */
+}
+
+/* 🌙 แก้ไข Dark Mode สำหรับกล่องค้นหาแบบใหม่ */
+body.dark-mode .search-box {
+    background: #222;
+    border-color: #444;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .search-box input {
+    color: #fff;
+}
+
+body.dark-mode .search-box button {
+    background: #555;
+}
+
+body.dark-mode .search-box button:hover {
+    background: #777;
+}
+
+body.dark-mode .search-box:focus-within {
+    border-color: #f37b21;
+}

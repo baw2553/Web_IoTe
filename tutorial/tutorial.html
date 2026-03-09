@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Simulator</title>
+    <link rel="icon" type="image/png" href="../image/Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="tutorial.css">
+</head>
+<body>
+    <nav id="navbar">
+        <a href="../index.html"><div class="logo-container">
+            <img src="../image/Logo.png" alt="IOTE Logo" class="logo-img">
+            <div class="logo-text">IoT and Information Engineering, KMITL</div>
+        </div></a>
+
+        <button id="menu-toggle" class="menu-toggle" aria-label="เปิด/ปิดเมนู">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าหลัก</a></li>
+            <li><a href="../About/about.html">About iot</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'acadDropdown')">
+                    Academics <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="acadDropdown" class="dropdown-content">
+                    <a href="../Academics/IoT/IoT.html">IoT System and Information</a>
+                    <a href="../Academics/Dual/Dual.html">Dual Degree</a>
+                    <a href="../Academics/Continuing/cont.html">วศ.บ.วิศวกรรมคอมพิวเตอร์...</a>
+                </div>
+            </li>
+            <li><a href="../Admission/admiss.html">Admission</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'FacultyDropdown')">
+                    Faculty <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="FacultyDropdown" class="dropdown-content">
+                    <a href="../Faculty/iot/professor.html">IoT System and Information</a>
+                    <a href="../Faculty/phy/phy.html">Industrial Physics</a>
+                </div>
+            </li>
+            <li><a href="../performance/cy.html">Performance</a></li>
+        </ul>
+    </nav>
+
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    <a href="../forum/forum.html" class="floating-forum-btn" title="Threads">
+        <i class="fas fa-envelope"></i>
+    </a>
+    <a href="../game/game.html" class="floating-game-btn" title="IoTE Runner">
+        <i class="fas fa-gamepad"></i>
+    </a>
+    <a href="tutorial.html" class="floating-info-btn" title="Study Simulator">
+    <i class="fas fa-book"></i> </a>
+
+    <div id="selection-screen" class="selection-container">
+        <h2>เลือกวิชาที่ต้องการเรียน</h2>
+        <div class="subject-cards">
+            <div class="subject-card" onclick="startSubject('C')">
+                <i class="fas fa-code fa-3x"></i>
+                <h3>C Programming</h3>
+                <p>เรียนรู้พื้นฐานการเขียนโปรแกรมภาษา C</p>
+            </div>
+            <div class="subject-card" onclick="startSubject('Circuit')">
+                <i class="fas fa-microchip fa-3x"></i>
+                <h3>Circuit Design</h3>
+                <p>เรียนรู้การต่อวงจรอิเล็กทรอนิกส์พื้นฐาน</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="tutorial-container" class="tutorial-container" style="display: none;">
+        <div class="lesson-section">
+            <button class="btn btn-secondary" onclick="goBack()" style="margin-bottom: 20px; background: #6c757d; color: white;"><i class="fas fa-arrow-left"></i> กลับไปหน้าเลือกวิชา</button>
+            <div class="progress-bar">
+                <span id="lesson-counter">Lesson 1 / 5</span>
+            </div>
+            <h2 id="lesson-title" class="lesson-title">บทเรียน</h2>
+            <div id="lesson-desc" class="lesson-desc">
+                รายละเอียดบทเรียนจะแสดงที่นี่
+            </div>
+            <div class="expected-output-box">
+                <strong>ผลลัพธ์ที่ต้องการ (Expected Output):</strong>
+                <pre id="expected-output" class="output-text"></pre>
+            </div>
+        </div>
+
+        <div class="workspace-section">
+            <div id="c-workspace">
+                <div class="editor-header">
+                    <span><i class="fas fa-code"></i> main.c</span>
+                </div>
+                <textarea id="code-editor" spellcheck="false"></textarea>
+                
+                <div class="terminal" style="margin-top: 15px;">
+                    <div class="terminal-header">Terminal Output</div>
+                    <div id="terminal-content" class="terminal-content">
+                        > Ready to compile...
+                    </div>
+                </div>
+            </div>
+
+            <div id="circuit-workspace" style="display: none;">
+                <div class="editor-header">
+                    <span><i class="fas fa-bolt"></i> Circuit Board (ลากอุปกรณ์ลงในช่องว่าง)</span>
+                </div>
+                
+                <div class="toolbox" id="toolbox">
+                    <div class="component" draggable="true" id="comp-battery" ondragstart="drag(event)">🔋 แบตเตอรี่</div>
+                    <div class="component" draggable="true" id="comp-led" ondragstart="drag(event)">💡 หลอด LED</div>
+                    <div class="component" draggable="true" id="comp-resistor" ondragstart="drag(event)">⚡ ตัวต้านทาน</div>
+                    <div class="component" draggable="true" id="comp-switch" ondragstart="drag(event)">🔘 สวิตช์</div>
+                    <div class="component" draggable="true" id="comp-buzzer" ondragstart="drag(event)">🔊 บัซเซอร์</div>
+                </div>
+
+                <div class="circuit-board" id="circuit-board">
+                    </div>
+
+                <div id="circuit-feedback" class="circuit-feedback" style="display: none;"></div>
+            </div>
+
+            <div class="action-buttons" style="margin-top: 15px;">
+                <button id="run-btn" class="btn btn-primary"><i class="fas fa-play"></i> Run Code</button>
+                <button id="next-btn" class="btn btn-success" style="display: none;">Next Lesson <i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../script.js"></script>
+    <script src="tutorial.js"></script>
+</body>
+</html>

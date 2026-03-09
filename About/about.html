@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/png" href="../image/Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+
+    <nav id="navbar">
+       <a href="../index.html"><div class="logo-container">
+            <img src="../image/Logo.png" alt="IOTE Logo" class="logo-img">
+            <div class="logo-text">IoT and Information Engineering, KMITL</div>
+        </div></a>
+        <button id="menu-toggle" class="menu-toggle" aria-label="เปิด/ปิดเมนู">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าหลัก</a></li>
+            <li><a href="about.html">About iot</a></li>
+
+            <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'acadDropdown')">
+            Academics <i class="fas fa-caret-down"></i>
+        </a>
+        <div id="acadDropdown" class="dropdown-content">
+            <a href="../Academics/IoT/IoT.html">IoT System and Information</a>
+            <a href="../Academics/Dual/Dual.html">Dual Degree</a>
+            <a href="../Academics/Continuing/cont.html">วศ.บ.วิศวกรรมคอมพิวเตอร์...</a>
+        </div>
+    </li>
+            <li><a href="../Admission/admiss.html">Admission</a></li>
+            <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'FacultyDropdown')">
+            Faculty <i class="fas fa-caret-down"></i>
+        </a>
+        <div id="FacultyDropdown" class="dropdown-content">
+            <a href="../Faculty/iot/professor.html">IoT System and Information</a>
+            <a href="../Faculty/phy/phy.html">Industrial Physics</a>
+        </div>
+    </li>
+            <li><a href="../performance/cy.html">Performance</a></li>
+        </ul>
+    </nav>
+
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+    <a href="../game/game.html" class="floating-game-btn" title="IoTE Runner">
+    <i class="fas fa-gamepad"></i>
+</a>
+<a href="../forum/forum.html" class="floating-forum-btn" title="Threads">
+    <i class="fas fa-envelope"></i>
+</a>
+<a href="../tutorial/tutorial.html" class="floating-info-btn" title="Study Simulator">
+    <i class="fas fa-book"></i> </a>
+
+    <div class="about-container">
+        
+        <div class="hero-section">
+            <h1 class="hero-title">ABOUT US</h1>
+            <div class="hero-menu">
+                <a href="#iot-info"><i class="fas fa-arrow-right"></i> ABOUT IoT System and Information</a>
+                <a href="#dual-degree"><i class="fas fa-arrow-right"></i> ABOUT Dual Degree</a>
+                <a href="#industry-physics"><i class="fas fa-arrow-right"></i> ABOUT Industry Physics</a>
+                <a href="#history"><i class="fas fa-arrow-right"></i> ความเป็นมาของหลักสูตร</a>
+            </div>
+        </div>
+
+        <div id="iot-info" class="content-section">
+            <div class="content-left">
+                <h2 class="section-title">IoT System and Information</h2>
+                <p class="description-text mt-30">หลักสูตรวิศวกรรมระบบไอโอทีและสารสนเทศเป็นเสมือนฟันเฟืองที่เชื่อมองค์ประกอบของโลกดิจิทัลเข้าด้วยกันทั้งศึกษาที่เรียนในหลักสูตรนี้จะได้ศึกษาและปฏิบัติเกี่ยวกับด้านเทคโนโลยีระบบไอโอทีและสารสนเทศโดยอาศัยความรู้พื้นฐานทั้งด้านซอฟต์แวร์ประกอบด้วยการเขียนโปรแกรมคอมพิวเตอร์การพัฒนาซอฟต์แวร์และแอพพลิเคชันด้านฮาร์ดแวร์ได้แก่การพัฒนาอุปกรณ์อิเล็กทรอนิกส์อัจฉริยะและสมาร์ทเซ็นเซอร์รวมถึงเชื่อมโยงสื่อสารเข้าหากันด้วยการศึกษาด้านการสื่อสารและเครือข่ายไปจนถึงการประยุกต์ใช้เทคโนโลยีปัญญาประดิษฐ์และวิทยาการข้อมูลโดยผสมผสานความรู้ต่างๆเหล่านี้เข้ากับกระบวนการทางวิศวกรรมศาสตร์คณิตศาสตร์เพื่อออกแบบสร้างนวัตกรรมใหม่ๆและส่งเสริมให้นักศึกษาต่อยอดนวัตกรรมของตนเองเพื่อผลิตใช้หรือทำเป็นสตาร์ทอัพเพื่อสร้างธุรกิจของตนเองได้</p>
+            </div>
+            <div class="content-right image-box">
+                <img src="../image/ab7.jpg" alt="">
+            </div>
+        </div>
+        <h3 class="section-subtitle mt-30">อาชีพที่ประกอบได้</h3>
+        <ul class="career-tags">
+                    <li>วิศวกรระบบไอโอที</li>
+                    <li>วิศวกรระบบเครือข่าย</li>
+                    <li>วิศวกรระบบโทรคมนาคม</li>
+                    <li>วิศวกรระบบเซนเซอร์และการวัด</li>
+                    <li>นักพัฒนาซอฟต์แวร์</li>
+                    <li>โปรแกรมเมอร์</li>
+                    <li>นักวิเคราะห์ระบบ</li>
+                    <li>นักออกแบบระบบเครือข่าย</li>
+                    <li>นักบริหารฐานข้อมูล</li>
+                    <li>นักพัฒนาเว็บไซต์</li>
+                    <li>วิศวกรระบบเครือข่ายคอมพิวเตอร์</li>
+                    <li>ผู้ดูแลระบบเครือข่าย</li>
+                    <li>วิศวกรข้อมูล</li>
+                    <li>วิศวกรซอฟต์แวร์</li>
+                    <li>ผู้เชี่ยวชาญด้านปัญญาประดิษฐ์ และเทคโนโลยีที่เกี่ยวข้องกับการสื่อสารและโทรคมนาคมสมัยใหม่</li>
+                </ul>
+
+        <div id="dual-degree" class="content-section reverse-layout">
+            <div class="content-left">
+                <div class="image-box">
+                    <img src="../image/ab8.jpg" alt="">
+                </div>
+            </div>
+            <div class="content-right">
+                <h2 class="section-title">Dual Degree</h2>
+                <p class="description-text mt-30">โปรแกรมDualDegreeได้รับการออกแบบมาเพื่อรองรับความต้องการของผู้เรียนที่สนใจต่อยอดความรู้ในสองสาขาที่แตกต่างแต่เสริมสร้างการเรียนรู้ร่วมกันได้อย่างมีประสิทธิภาพผู้เรียนจะได้รับปริญญาสองใบหลังจากสำเร็จการศึกษาคือปริญญาวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมระบบไอโอทีและสารสนเทศและปริญญาวิทยาศาสตรบัณฑิตสาขาวิชาฟิสิกส์อุตสาหกรรมซึ่งช่วยเพิ่มโอกาสในการทำงานและขยายขอบเขตความสามารถในการแก้ไขปัญหาที่ซับซ้อนในโลกยุคปัจจุบันได้อย่างมีประสิทธิภาพมากขึ้น</p>
+            </div>
+        </div>
+        <h3 class="section-subtitle">อาชีพที่ประกอบได้</h3>
+                <ul class="career-tags">
+                    <li>นักวิจัย/นักพัฒนานวัตกรรม</li>
+                    <li>ผู้ประกอบการทางธุรกิจและเทคโนโลยี</li>
+                    <li>วิศวกรระบบไอโอที</li>
+                    <li>วิศวกรระบบโทรคมนาคม</li>
+                    <li>นักพัฒนาซอฟต์แวร์</li>
+                    <li>นักวิทยาศาสตร์ข้อมูล</li>
+                    <li>วิศวกรระบบเครือข่าย</li>
+                    <li>วิศวกรด้านเครื่องมือวัดและควบคุม</li>
+                </ul>
+
+        <div id="industry-physics" class="content-section">
+            <div class="content-left">
+                <h2 class="section-title">Industry Physics</h2>
+                <p class="description-text mt-30">หลักสูตรฟิสิกส์อุตสาหกรรมมุ่งเน้นการประยุกต์ความรู้ด้านวัสดุศาสตร์ทัศนศาสตร์เลเซอร์เทคโนโลยีสุญญากาศพลาสมาและฟิล์มบางเครื่องมือวัดและควบคุมทางอุตสาหกรรมการทดสอบแบบไม่ทำลายเพื่อประยุกต์ใช้งานในอุตสาหกรรมต่างๆเช่นอุตสาหกรรมยานยนต์ชิ้นส่วนอิเล็กทรอนิกส์เลนส์อุตสาหกรรมอัญมณีทั้งนี้การเรียนรู้มุ่งเน้นให้นักศึกษามีทักษะปฏิบัติจากการเรียนรู้และการทดลองในห้องปฏิบัติการที่ทันสมัยและได้มาตรฐานระดับสากลผ่านรายวิชาการสร้างภาพเบื้องต้นสำหรับงานทางวิทยาศาสตร์(รวมถึงการออกแบบชิ้นส่วนด้วยโปรแกรมคอมพิวเตอร์3มิติการวิเคราะห์กระบวนการผลิตและขึ้นรูปชิ้นงาน)เพื่อให้นักศึกษาได้นำความรู้ทักษะและประสบการณ์ไปใช้งานบูรณาการในการแก้ปัญหาทางอุตสาหกรรมหรือสร้างสรรค์นวัตกรรมในการออกแบบและพัฒนากระบวนการในอุตสาหกรรมให้มีประสิทธิภาพสูงสุด</p>
+            </div>
+            <div class="content-right image-box">
+                <img src="../image/ab9.jpg" alt="">
+            </div>
+        </div>
+        <h3 class="section-subtitle">อาชีพที่ประกอบได้</h3>
+                <ul class="career-tags">
+                    <li>นักฟิสิกส์อุตสาหกรรม</li>
+                    <li>นักวิจัย</li>
+                    <li>วิศวกรมาตรวิทยา</li>
+                    <li>ผู้เชี่ยวชาญด้านเครื่องมือวัด</li>
+                    <li>วิศวกรควบคุมคุณภาพ</li>
+                    <li>นักวิเคราะห์ข้อมูล</li>
+                </ul>
+
+        <div id="history" class="history-section">
+            <h2 class="history-title">ความเป็นมาของหลักสูตร</h2>
+            <div class="history-content">
+                <p>ภาควิชาวิศวกรรมโทรคมนาคมเป็นภาควิชาหนึ่งในคณะวิศวกรรมศาสตร์สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบังซึ่งมีรากฐานที่เกี่ยวเนื่องกับการก่อตั้งสถาบันฯโดยศูนย์ฝึกอบรมโทรคมนาคมนนทบุรีได้ก่อตั้งขึ้นเมื่อวันที่24สิงหาคมพ.ศ.2503จากความร่วมมือระหว่างรัฐบาลไทยและรัฐบาลญี่ปุ่นต่อมาศูนย์ฝึกอบรมฯได้รับการยกฐานะขึ้นเป็นวิทยาลัยโทรคมนาคมนนทบุรีเมื่อพ.ศ.2507และได้รับการสถาปนาเป็นสถาบันเทคโนโลยีพระจอมเกล้าสังกัดกระทรวงศึกษาธิการเมื่อวันที่24เมษายนพ.ศ.2514ซึ่งวิทยาลัยโทรคมนาคมนนทบุรีได้เปลี่ยนสภาพเป็นคณะวิศวกรรมศาสตร์ของสถาบันเทคโนโลยีพระจอมเกล้าวิทยาเขตเจ้าคุณทหารลาดกระบัง</p>
+                <p>ถึงปีพ.ศ.2561ได้มีการปรับปรุงหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมโทรคมนาคม(หลักสูตรปรับปรุงพ.ศ.2561)ให้เป็นหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมระบบไอโอทีและสารสนเทศ(หลักสูตรปรับปรุงพ.ศ.2561)และเปลี่ยนชื่อภาควิชาเป็น"ภาควิชาวิศวกรรมระบบไอโอทีและสารสนเทศ"เพื่อให้หลักสูตรมีความทันสมัยและสอดคล้องกับความก้าวหน้าทางเทคโนโลยีและความต้องการของประเทศ</p>
+                <p>ในปีพ.ศ.2562มีการเปิดหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมระบบไอโอทีและสารสนเทศ(หลักสูตรนานาชาติ)และเปิดหลักสูตรใหม่คือหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมคอมพิวเตอร์และไอโอที(ต่อเนื่อง)</p>
+                <p>ในปีพ.ศ.2565มีการปรับปรุงหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมระบบไอโอทีและสารสนเทศ(หลักสูตรปรับปรุงพ.ศ.2565)และหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมระบบไอโอทีและสารสนเทศ(หลักสูตรนานาชาติ/หลักสูตรปรับปรุงพ.ศ.2565)และได้เปิดหลักสูตรใหม่คือหลักสูตรควบระดับปริญญาตรี2ปริญญา(DualDegree)ร่วมกับคณะวิทยาศาสตร์คือหลักสูตรวิศวกรรมศาสตรบัณฑิตสาขาวิชาวิศวกรรมระบบไอโอทีและสารสนเทศและหลักสูตรวิทยาศาสตรบัณฑิตสาขาวิชาฟิสิกส์อุตสาหกรรม</p>
+                <p>ในปีพ.ศ.2566มีการปรับปรุงหลักสูตรระดับปริญญาโทและระดับปริญญาเอกคือหลักสูตรวิศวกรรมศาสตรมหาบัณฑิตสาขาวิชาวิศวกรรมปัญญาประดิษฐ์ไอโอทีและสารสนเทศ(AIoTandInformationEngineering)และหลักสูตรปรัชญาดุษฎีบัณฑิตสาขาวิชาวิศวกรรมปัญญาประดิษฐ์ไอโอทีและสารสนเทศ(AIoTandInformationEngineering)</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-section">
+        <h2 class="contact-header">Contact</h2>
+        <div class="contact-grid">
+            
+            <div class="contact-col">
+                <h3>Department of IoT and<br>Information Engineering</h3>
+                <p class="desc">ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ คณะวิศวกรรมศาสตร์<br>สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+                <div class="address-box">
+                    <i class="fas fa-map-marker-alt pin-icon"></i>
+                    <p>ชั้น 12 อาคารเรียนรวม 12 ชั้น<br>เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง<br>กรุงเทพมหานคร 10520</p>
+                </div>
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <strong>Email</strong>
+                        <p>iote@kmitl.ac.th<br>pikulkaew.ta@kmitl.ac.th</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Phone</strong>
+                        <p>02-329-8000 ext.5129<br>02-329-8301 ext.235</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Line</strong>
+                        <p>@iotekmitl</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Facebook</strong>
+                        <p>www.facebook.com/IOTE.KMITL</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-col">
+                <h3>Industrial Physics</h3>
+                <p class="desc">หลักสูตรฟิสิกส์อุตสาหกรรม ภาควิชาฟิสิกส์ คณะวิทยาศาสตร์<br>สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+                <div class="address-box">
+                    <i class="fas fa-map-marker-alt pin-icon"></i>
+                    <p>ตึกจุฬาภรณ์วลัยลักษณ์ 1 ชั้น 3<br>เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง<br>กรุงเทพมหานคร 10520</p>
+                </div>
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <strong>Email</strong>
+                        <p>SCIENCE@kmitl.ac.th</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Phone</strong>
+                        <p>02-329-8000 ext.6214</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Line</strong>
+                        <p>@842xiplr</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Facebook</strong>
+                        <p>https://www.facebook.com/<br>physiotkmitl<br>https://facebook.com/SciKmitl</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+    <script src="about.js"></script>
+</body>
+</html>

@@ -1,0 +1,500 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.tutorial-container {
+    max-width: 1200px;
+    margin: 120px auto 40px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.lesson-section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.progress-bar {
+    font-size: 0.9rem;
+    color: #f37021;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.lesson-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.lesson-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+code {
+    background-color: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #d63384;
+}
+
+.expected-output-box {
+    background: #eef2f5;
+    padding: 15px;
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+}
+
+.output-text {
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.workspace-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.editor-header {
+    background: #2d2d2d;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px 8px 0 0;
+    font-family: monospace;
+}
+
+#code-editor {
+    width: 100%;
+    height: 250px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Consolas', monospace;
+    font-size: 1rem;
+    padding: 15px;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    resize: vertical;
+    outline: none;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Prompt', sans-serif;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.btn-primary { background: #f37021; color: white; }
+.btn-primary:hover { background: #d95d16; }
+
+.btn-success { background: #28a745; color: white; }
+.btn-success:hover { background: #218838; }
+
+.terminal {
+    background: #000;
+    color: #0f0;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal-header {
+    background: #333;
+    color: #fff;
+    padding: 5px 15px;
+    font-size: 0.85rem;
+    font-family: monospace;
+}
+
+.terminal-content {
+    padding: 15px;
+    font-family: 'Consolas', monospace;
+    white-space: pre-wrap;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.success-text { color: #0f0; }
+.error-text { color: #ff4d4d; }
+
+@media (max-width: 992px) {
+    .tutorial-container { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   ส่วนเสริมใหม่สำหรับหน้าเลือกวิชา และ Circuit Drag & Drop
+   ========================================================= */
+
+.selection-container {
+    max-width: 800px;
+    margin: 150px auto 50px auto;
+    text-align: center;
+}
+
+.subject-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.subject-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.3s;
+    width: 300px;
+    border: 2px solid transparent;
+}
+
+.subject-card:hover {
+    transform: translateY(-10px);
+    border: 2px solid #f37021;
+}
+
+.subject-card i { color: #007bff; margin-bottom: 20px; }
+.subject-card h3 { font-size: 1.5rem; margin-bottom: 10px; color: #111; }
+.subject-card p { color: #666; font-size: 0.95rem; line-height: 1.5; }
+
+.toolbox {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    background: #eef2f5;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    flex-wrap: wrap;
+}
+
+.component {
+    width: 80px;            /* ล็อกความกว้างให้เท่ากันเป๊ะ */
+    height: 80px;           /* ล็อกความสูงให้เท่ากันเป๊ะ */
+    display: flex;
+    flex-direction: column; /* ให้ไอคอนอยู่บน ข้อความอยู่ล่าง */
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: grab;
+    padding: 5px;
+    box-sizing: border-box; /* บังคับไม่ให้กรอบหรือ Padding ดันขนาดกล่องให้ใหญ่ขึ้น */
+    text-align: center;
+    user-select: none;      /* ป้องกันการเผลอคลุมดำตัวอักษรตอนลาก */
+}
+
+/* ปรับแต่งข้อความข้างในไม่ให้ดันกล่องเบี้ยว */
+.component span, 
+.component font,
+.component div {
+    font-size: 12px;        /* ลดขนาดตัวอักษรลงนิดหน่อยให้พอดีกล่อง */
+    line-height: 1.2;
+    margin-top: 4px;
+    word-break: break-word; /* ถ้าคำยาวเกินให้ตัดขึ้นบรรทัดใหม่โดยไม่ดันกล่อง */
+}
+
+/* เมื่ออุปกรณ์ถูกลากไปวางในช่องกระดาน (กรอบสีเขียว) */
+.drop-slot .component {
+    width: 100%;            /* ให้ขยายเต็มกรอบช่องวางพอดี */
+    height: 100%;
+    border: none;           /* เอาขอบสีฟ้าออก จะได้ดูเนียนไปกับกรอบสีเขียว */
+    cursor: pointer;
+}
+
+.component:active { cursor: grabbing; }
+
+#circuit-board {
+    display: flex;
+    flex-direction: row;       /* บังคับให้อยู่ในแนวนอน */
+    flex-wrap: nowrap;         /* บังคับไม่ให้ปัดตกบรรทัดใหม่ */
+    justify-content: center;   /* จัดให้อยู่กึ่งกลาง */
+    align-items: center;
+    gap: 10px;                 /* ระยะห่างระหว่างช่อง (ปรับเป็น 0 ได้ถ้าอยากให้ติดกันแนบสนิท) */
+    overflow-x: auto;          /* เผื่อผู้ใช้เปิดในมือถือจอเล็ก จะได้ใช้นิ้วเลื่อนซ้ายขวาได้ */
+    padding: 20px;
+    background-color: #333;    /* สีพื้นหลัง (ใช้ของเดิมที่คุณตั้งไว้ได้เลยครับ) */
+    border-radius: 8px;
+    min-height: 150px;
+}
+
+.drop-slot {
+    flex: 0 0 auto;            /* ป้องกันไม่ให้กล่องถูกบีบจนเสียทรง */
+    width: 100px;              /* ความกว้างกล่อง (ปรับให้เข้ากับขนาดรูปของคุณได้เลย) */
+    height: 100px;             /* ความสูงกล่อง */
+    border: 2px dashed #666;   
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444;
+    transition: all 0.2s;
+}
+
+.drop-slot.filled {
+    border: 2px solid #4CAF50; /* กรอบสีเขียวตอนวางของเสร็จ */
+    background-color: #fff;
+}
+
+.circuit-feedback {
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+/* --- คัดลอกส่วนนี้ไปวางต่อท้ายไฟล์ c-tutorial.css เดิมของคุณ --- */
+
+/* 1. จัดการพื้นหลังหลักและตัวอักษรทั่วไป */
+body.dark-mode {
+    background-color: #121212;
+    color: #f5f5f5;
+}
+
+/* 2. ปรับปรุงการ์ดบทเรียน (Lesson Section) */
+body.dark-mode .lesson-section,
+body.dark-mode .subject-card {
+    background: #1e1e1e;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 1px solid #333;
+}
+
+/* 3. แก้ไขปัญหาฟอนต์จาง (ให้สีขาวสว่างขึ้น) */
+body.dark-mode .lesson-title,
+body.dark-mode .subject-card h3 {
+    color: #ffffff;
+}
+
+body.dark-mode .lesson-desc,
+body.dark-mode .subject-card p {
+    color: #e0e0e0; /* สีขาวนวล อ่านง่ายกว่าสีเทาเดิม */
+}
+
+/* 4. ปรับแต่งกล่อง Expected Output (พื้นหลังต้องเข้มขึ้น) */
+body.dark-mode .expected-output-box {
+    background: #2a2d30;
+    border-left: 5px solid #007bff;
+}
+
+body.dark-mode .output-text {
+    color: #ffffff;
+}
+
+/* 5. ปรับปรุง Toolbox และ Component ในโหมดกลางคืน */
+body.dark-mode .toolbox {
+    background: #25282a;
+    border-color: #444;
+}
+
+body.dark-mode .component {
+    background: #333;
+    border-color: #007bff;
+    color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+}
+
+/* 6. ปรับสีฟอนต์ Code พื้นฐาน */
+body.dark-mode code {
+    background-color: #333;
+    color: #ff79c6; /* สีชมพูสว่างขึ้นเพื่อให้ตัดกับสีดำ */
+}
+
+/* 7. ปรับแก้สีปุ่มย้อนกลับหรือปุ่มทั่วไปให้เด่นขึ้น */
+body.dark-mode .btn-secondary {
+    background: #444;
+    color: #fff;
+}
+
+/* 8. ปรับช่องว่างอุปกรณ์ (Slot) ในโหมดกลางคืน */
+body.dark-mode .drop-slot {
+    background-color: #222;
+    border-color: #444;
+}
+
+body.dark-mode .drop-slot.filled {
+    background-color: #1e1e1e; /* พื้นหลังช่องที่วางแล้วให้มืดลง เพื่อให้ตัวอุปกรณ์สีขาวเด่นขึ้น */
+}
+
+.drop-slot.filled:hover {
+    border: 2px solid #ff4d4d; /* กลายเป็นสีแดงตอนชี้เผื่อจะลบ */
+    cursor: x;
+}
+
+/* เพิ่มแอนิเมชันให้ดูเหมือนมีกระแสไฟวิ่งเมื่อผ่าน */
+.drop-slot.success-animation {
+    box-shadow: 0 0 15px #4CAF50;
+    border-color: #4CAF50;
+    transition: all 0.5s;
+}
+
+@media (max-width: 768px) {
+    /* ปรับแต่งกระดานวงจรให้กระชับขึ้น */
+    #circuit-board {
+        padding: 10px;
+        gap: 5px; /* ลดระยะห่างระหว่างช่อง */
+        min-height: 100px;
+    }
+
+    /* ย่อขนาดช่องวาง (Drop Slot) ให้เล็กลงเพื่อให้พอดีจอ */
+    .drop-slot {
+        width: 55px;
+        height: 55px;
+        border-width: 1px;
+    }
+
+    /* ย่อขนาดอุปกรณ์ (Component) ทั้งใน Toolbox และใน Slot */
+    .component {
+        width: 60px;
+        height: 60px;
+        padding: 3px;
+        border-width: 1px;
+    }
+
+    /* ย่อขนาดตัวอักษรของอุปกรณ์ไม่ให้ล้นกล่อง */
+    .component span, 
+    .component font,
+    .component div {
+        font-size: 10px;
+        margin-top: 2px;
+    }
+    
+    /* ปรับให้ Toolbox จัดเรียงได้ดีขึ้น */
+    .toolbox {
+        justify-content: center;
+        padding: 10px;
+        gap: 8px;
+    }
+}
+
+#circuit-board {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    /* บังคับไม่ให้ตกบรรทัด */
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    /* ใช้เปอร์เซ็นต์ให้ช่องว่างยืดหยุ่นตามจอ */
+    overflow: hidden;
+    /* ปิดแถบเลื่อน Scroll */
+    padding: 15px 10px;
+    background-color: #333;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.drop-slot {
+    flex: 1 1 0;
+    /* หัวใจสำคัญ: ย่อ/ขยายกล่องให้พอดีกับจอใน 1 บรรทัด */
+    max-width: 100px;
+    /* ขนาดใหญ่สุดเมื่ออยู่บนคอม */
+    aspect-ratio: 1 / 1;
+    /* ล็อกสัดส่วนให้เป็นสี่เหลี่ยมจัตุรัสเสมอ */
+    height: auto;
+    border: 2px dashed #666;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+/* บังคับให้อุปกรณ์ที่วางลงไป ขยายเต็มกรอบพอดี */
+.drop-slot .component {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border: none;
+    cursor: pointer;
+}
+
+.toolbox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; /* 🚨 บังคับห้ามตกบรรทัดเด็ดขาด */
+    justify-content: space-between; /* กระจายช่องว่างให้เท่ากัน */
+    align-items: center;
+    gap: 5px; 
+    padding: 10px;
+    background: #eef2f5;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden; /* ปิดการสไลด์ */
+}
+
+.component {
+    flex: 1 1 0; /* 🚨 หัวใจสำคัญ: สั่งให้อุปกรณ์ยืดหดและแบ่งพื้นที่กันคนละเท่าๆ กัน */
+    max-width: 80px; /* ขนาดใหญ่สุดเมื่ออยู่บนจอคอม */
+    aspect-ratio: 1 / 1; /* บังคับให้เป็นสี่เหลี่ยมจัตุรัสเสมอ */
+    height: auto;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: grab;
+    padding: 2px;
+    box-sizing: border-box; 
+    text-align: center;
+    user-select: none; 
+}
+
+/* ปรับแต่งข้อความข้างในให้อยู่ในกล่อง */
+.component span, 
+.component font,
+.component div {
+    font-size: 11px; 
+    line-height: 1.1;
+    margin-top: 4px;
+    word-break: break-word; 
+}
+
+@media (max-width: 768px) {
+    /* ย่อฟอนต์ในมือถือให้เล็กสุด เพื่อไม่ให้อักษรดันกล่องตกบรรทัด */
+    .component, 
+    .component span, 
+    .component font, 
+    .component div {
+        font-size: 9px !important;
+    }
+}

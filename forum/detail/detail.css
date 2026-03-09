@@ -1,0 +1,161 @@
+/* ดันเนื้อหาทั้งหมดของหน้าเว็บบอร์ดลงมาให้อยู่ใต้ Navbar */
+body {
+    padding-top: 100px; 
+}
+
+/* หากต้องการจัดระเบียบกล่องค้นหาเพิ่มเติม (เผื่อไว้ให้ครับ) */
+.forum-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    flex-wrap: wrap; /* เผื่อหน้าจอมือถือให้มันปัดบรรทัดลงมาได้ */
+}
+
+/* ส่วนตกแต่งพื้นฐาน */
+.detail-container { 
+    max-width: 800px; 
+    margin: 40px auto; 
+    padding: 20px; 
+    background: white; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+.back-btn { 
+    padding: 10px 15px; 
+    background: #333; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-bottom: 20px; 
+}
+
+.comment-box { 
+    background: #f9f9f9; 
+    padding: 15px; 
+    margin-top: 10px; 
+    border-radius: 5px; 
+    border-left: 4px solid #f37021; 
+    color: #333 !important; /* ล็อกสีเข้มให้เห็นชัดตลอดเวลา */
+}
+
+.comment-form { 
+    margin-top: 30px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+}
+
+.comment-form input, .comment-form textarea { 
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    width: 100%; 
+}
+
+.comment-form button { 
+    padding: 10px; 
+    background: #f37021; 
+    color: white; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    width: 100px;
+}
+
+/* 🌙 Dark Mode Fix: แก้ปัญหาตัวหนังสือจาง */
+body.dark-mode .detail-container {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode h3, 
+body.dark-mode #topicContent {
+    color: #ffffff !important; /* ล็อกให้เป็นสีขาวชัดๆ ในโหมดมืด */
+}
+
+/* ========================================= */
+/* --- จัดระเบียบปุ่ม Floating มุมขวาล่าง --- */
+/* ========================================= */
+
+/* ปุ่ม Dark Mode (อยู่ล่างสุด) */
+.theme-toggle {
+    position: fixed;
+    bottom: 30px;  /* ระยะห่างจากด้านล่าง */
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #111111; 
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+body.dark-mode .theme-toggle {
+    background-color: #f37b21; 
+}
+
+/* ปุ่มกระทู้ / เว็บบอร์ด */
+.floating-forum-btn {
+    position: fixed !important;
+    bottom: 90px !important; /* ดันขึ้นมา 60px */
+    right: 30px !important;
+    z-index: 1000;
+}
+
+/* ปุ่มมินิเกม */
+.floating-game-btn {
+    position: fixed !important;
+    bottom: 150px !important; /* ดันขึ้นมาอีก 60px */
+    right: 30px !important;
+    z-index: 1000;
+}
+
+/* ปุ่มคู่มือการใช้งาน (อยู่บนสุด) */
+.floating-info-btn {
+    position: fixed !important;
+    bottom: 210px !important; /* ดันขึ้นมาอีก 60px */
+    right: 30px !important;
+    z-index: 1000;
+}
+
+/* ========================================= */
+/* --- Responsive Design สำหรับมือถือ --- */
+/* ========================================= */
+@media screen and (max-width: 768px) {
+    /* ลดขอบและช่องว่างของกล่องเนื้อหาหลัก */
+    .detail-container {
+        margin: 20px 10px; /* ลด margin ด้านข้างไม่ให้กินที่ */
+        padding: 15px; 
+    }
+
+    /* ปรับปุ่ม Back ให้กดง่ายขึ้น */
+    .back-btn {
+        width: 100%; /* ให้ปุ่มกว้างเต็มจอ */
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    /* ปรับขนาดปุ่มมุมขวาล่างให้เล็กลงนิดหน่อย จะได้ไม่บังข้อความ */
+    .theme-toggle, 
+    .floating-forum-btn, 
+    .floating-game-btn, 
+    .floating-info-btn {
+        width: 45px;
+        height: 45px;
+        right: 15px !important; /* ขยับชิดขวามากขึ้น */
+    }
+
+    .theme-toggle { bottom: 20px; }
+    .floating-forum-btn { bottom: 75px !important; }
+    .floating-game-btn { bottom: 130px !important; }
+    .floating-info-btn { bottom: 185px !important; }
+}

@@ -1,0 +1,268 @@
+:root {
+    --primary-orange: #f58220; /* สีส้มตามภาพ */
+    --hover-orange: #e07218;
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --border-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.admission-container {
+    max-width: 1000px;
+    margin: 100px auto 40px;
+    padding: 0 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+/* ส่วนกล่องสถานะ (3 กล่องบน) */
+.stats-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: #fff;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+    padding: 25px 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    min-width: 180px;
+}
+
+.icon-box {
+    color: var(--primary-orange);
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+.stat-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.stat-name {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.stat-badge {
+    background-color: var(--primary-orange);
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-weight: 400;
+}
+
+/* ส่วนเนื้อหาหลัก */
+.content-wrapper {
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+}
+
+/* สไตล์กล่องหัวข้อ (Accordion) */
+.accordion {
+    background-color: var(--primary-orange);
+    color: #111; /* ตัวหนังสือสีดำตามรูป */
+    cursor: pointer;
+    padding: 15px 20px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1.1rem;
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion:hover {
+    background-color: var(--hover-orange);
+}
+
+.accordion.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+}
+
+.accordion-multiline {
+    align-items: flex-start;
+}
+
+.accordion-multiline span {
+    width: 90%;
+    line-height: 1.5;
+}
+
+.accordion i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    font-weight: 300;
+}
+
+.accordion.active i {
+    transform: rotate(180deg);
+}
+
+/* สไตล์เนื้อหาด้านใน (Panel) */
+.panel {
+    padding: 0 20px;
+    background-color: #fbfbfb; /* สีพื้นหลังสว่างนิดๆ ตามรูป */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.panel.active-panel {
+    border: 1px solid #eee;
+    border-top: none;
+}
+
+.panel-content {
+    padding: 20px 0;
+}
+
+.panel-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.panel-content h3:first-child {
+    margin-top: 0;
+}
+
+.panel-content p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.panel-content ul {
+    margin: 0 0 15px 0;
+    padding-left: 20px;
+}
+
+.panel-content li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.panel-content a {
+    color: var(--text-color);
+    text-decoration: underline;
+    word-break: break-all;
+}
+
+.panel-content a:hover {
+    color: var(--primary-orange);
+}
+/* =========================================
+   Dark Mode สำหรับหน้า Admission
+   ========================================= */
+body.dark-mode,
+body[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #f5f5f5;
+    --border-color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.dark-mode .stat-card,
+body[data-theme="dark"] .stat-card {
+    background: #222;
+    border-color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+body.dark-mode .section-title,
+body[data-theme="dark"] .section-title {
+    border-bottom-color: #333;
+}
+
+/* ปรับสีตัวหนังสือบนแถบสีส้มให้มองเห็นชัดขึ้นในโหมดมืด (ถ้าต้องการ) */
+body.dark-mode .accordion,
+body[data-theme="dark"] .accordion {
+    color: #111; 
+}
+
+/* สีพื้นหลังกล่องเนื้อหาที่สไลด์ลงมา */
+body.dark-mode .panel,
+body[data-theme="dark"] .panel {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .panel.active-panel,
+body[data-theme="dark"] .panel.active-panel {
+    border-color: #444;
+}
+
+body.dark-mode .panel-content h3,
+body[data-theme="dark"] .panel-content h3 {
+    color: #f37b21; /* เปลี่ยนหัวข้อด้านในให้เป็นสีส้มจะได้เด่นขึ้น */
+}
+
+/* ปรับสีลิงก์ในโหมดมืด */
+body.dark-mode .panel-content a,
+body[data-theme="dark"] .panel-content a {
+    color: #4da6ff; 
+}
+
+body.dark-mode .panel-content a:hover,
+body[data-theme="dark"] .panel-content a:hover {
+    color: var(--hover-orange);
+}
+
+@media screen and (max-width: 600px) { /* หรือค่าที่คุณใช้อยู่ */
+    .stat-card {
+        width: 100%; /* Stretch บล็อก */
+        flex: 1 0 0%; /* เพื่อให้กว้างเท่ากันใน flex container */
+    }
+}
+
+.accordion i {
+    font-family: "Font Awesome 6 Free" !important; /* บังคับให้ใช้ฟอนต์ไอคอน */
+    font-weight: 900 !important; /* บังคับความหนาให้รองรับแบบ Solid */
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}

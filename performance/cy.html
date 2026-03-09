@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cybersecurity Laboratory</title>
+    <link rel="icon" type="image/png" href="../image/Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="cy.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="../index.html"><div class="logo-container">
+            <img src="../image/Logo.png" alt="IOTE Logo" class="logo-img">
+            <div class="logo-text">IoT and Information Engineering, KMITL</div>
+        </div></a>
+
+        <button id="menu-toggle" class="menu-toggle" aria-label="เปิด/ปิดเมนู">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าหลัก</a></li>
+            <li><a href="about.html">About iot</a></li>
+
+            <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'acadDropdown')">
+            Academics <i class="fas fa-caret-down"></i>
+        </a>
+        <div id="acadDropdown" class="dropdown-content">
+            <a href="../Academics/IoT/IoT.html">IoT System and Information</a>
+            <a href="../Academics/Dual/Dual.html">Dual Degree</a>
+            <a href="../Academics/Continuing/cont.html">วศ.บ.วิศวกรรมคอมพิวเตอร์...</a>
+        </div>
+    </li>
+            <li><a href="../Admission/admiss.html">Admission</a></li>
+            <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'FacultyDropdown')">
+            Faculty <i class="fas fa-caret-down"></i>
+        </a>
+        <div id="FacultyDropdown" class="dropdown-content">
+            <a href="../Faculty/iot/professor.html">IoT System and Information</a>
+            <a href="../Faculty/phy/phy.html">Industrial Physics</a>
+        </div>
+    </li>
+            <li><a href="cy.html">Performance</a></li>
+        </ul>
+    </nav>
+
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <a href="../forum/forum.html" class="floating-forum-btn" title="Threads">
+    <i class="fas fa-envelope"></i>
+</a>
+<a href="../game/game.html" class="floating-game-btn" title="IoTE Runner">
+    <i class="fas fa-gamepad"></i>
+</a>
+<a href="../tutorial/tutorial.html" class="floating-info-btn" title="Study Simulator">
+    <i class="fas fa-book"></i> </a>
+
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Cybersecurity Laboratory</h1>
+        <p>AI Security • IoT Security • Network Defense • Penetration Testing</p>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about">
+    <img src="landscape.jpg" alt="">
+    <h2>About Our Laboratory</h2>
+    <div class="about-box">
+        <p>
+            IT and IoT Cyber Security Laboratory is a dedicated environment where students,
+            professionals, and researchers enhance their skills in defending and analyzing cyber threats.
+            The lab focuses on both Defensive and Offensive Security techniques.
+        </p>
+        <ul>
+            <li>Network Infrastructure, IoT & Wireless Security</li>
+            <li>Cyber Security with AI Data Analytics</li>
+            <li>Penetration Testing and Cyber Attack</li>
+        </ul>
+    </div>
+</section>
+
+<!-- RESEARCHER SECTION -->
+<section class="research">
+    <h2>Head Researcher</h2>
+    <div class="card large">
+        <img src="cyberlab.jpg" alt="">
+        <h3>ผศ.ดร.อรรถพล ป้อมสถิตย์</h3>
+        <p>Asst.Prof.Dr.Auttapon Pomsathit</p>
+    </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team">
+    <h2>Research Assistants</h2>
+  <!-- AI Data Analytics -->
+    <h3 style="margin:60px 0 20px;">AI Data Analytics</h3>
+    <div class="grid">
+
+        <div class="card">
+            <img src="1.jpg" alt="">
+            <h3>ชินวัตร ศิลาธนสาร</h3>
+            <p>Chinnawat Silathanasan</p>
+        </div>
+
+        <div class="card">
+            <img src="2.jpg" alt="">
+            <h3>ฐิติพันธ์ สอนโคตร</h3>
+            <p>Thitipan Sornkot</p>
+        </div>
+
+        <div class="card">
+            <img src="3.jpg" alt="">
+            <h3>โกเมศ ประกอบผล</h3>
+            <p>Komet Prakopphon</p>
+        </div>
+
+        <div class="card">
+            <img src="4.jpg" alt="">
+            <h3>จตุภัทร ขจรชัยกุล</h3>
+            <p>Jatupat Kajornchaikul</p>
+        </div>
+
+        <div class="card">
+            <img src="5.jpg" alt="">
+            <h3>ณัชกานต์ อุ่นทรัพย์</h3>
+            <p>Natchakan Unsap</p>
+        </div>
+
+        <div class="card">
+            <img src="6.jpg" alt="">
+            <h3>อภิสรา สมมุติ</h3>
+            <p>Apitsara Sommut</p>
+        </div>
+
+        <div class="card">
+            <img src="7.jpg" alt="">
+            <h3>อภิรัก จีนทั้ง</h3>
+            <p>Apilak Jeentang</p>
+        </div>
+
+    </div>
+    <!-- Penetration Testing -->
+    <h3 style="margin:40px 0 20px;">Penetration Testing</h3>
+    <div class="grid">
+
+        <div class="card">
+            <img src="8.jpg" alt="">
+            <h3>ศุภฤกษ์ หาระสาร</h3>
+            <p>Supareak Harasan</p>
+        </div>
+
+        <div class="card">
+            <img src="9.jpg" alt="">
+            <h3>สรพัศ พิศิลป์</h3>
+            <p>Sorrapat Pisil</p>
+        </div>
+
+        <div class="card">
+            <img src="10.jpg" alt="">
+            <h3>ภัทรชนน เมธาวุฒิยากรณ์</h3>
+            <p>Patchanon Methavutthiyaporn</p>
+        </div>
+
+        <div class="card">
+            <img src="11.jpg" alt="">
+            <h3>พันวินทร์ ชุติกาญจนโรจน์</h3>
+            <p>Phanwin Chutikanchanarot</p>
+        </div>
+
+        <div class="card">
+            <img src="12.jpg" alt="">
+            <h3>ปณวัฒน์ นามสง่า</h3>
+            <p>Panawat Namsa-nga</p>
+        </div>
+
+        <div class="card">
+            <img src="13.jpg" alt="">
+            <h3>บุศราพร มิทธิศร</h3>
+            <p>Bootsaraphorn Mit-thisorn</p>
+        </div>
+
+    </div>
+
+    <!-- Network Infrastructure -->
+    <h3 style="margin:60px 0 20px;">Network Infrastructure</h3>
+    <div class="grid">
+
+        <div class="card">
+            <img src="14.jpg" alt="">
+            <h3>กฤษณ์ เกษมเทวินทร์</h3>
+            <p>Krit Kasemtewin</p>
+        </div>
+
+        <div class="card">
+            <img src="15.jpg" alt="">
+            <h3>ธีรมณ พินทุไพศิษฎ์วงศ์</h3>
+            <p>Teeramet Pintupaisitwong</p>
+        </div>
+
+        <div class="card">
+            <img src="16.jpg" alt="">
+            <h3>อิทธิกร แป้นบางนา</h3>
+            <p>Ittikorn Panbangna</p>
+        </div>
+
+        <div class="card">
+            <img src="17.jpg" alt="">
+            <h3>นพรุจ จิตทวีล</h3>
+            <p>Nopparuj Jitthawil</p>
+        </div>
+
+    </div>
+
+  
+
+</section>
+
+<footer>
+    © 2026 Cybersecurity Laboratory | KMITL
+</footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

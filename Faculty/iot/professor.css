@@ -1,0 +1,342 @@
+/* =========================================
+   Variables & Base Settings
+   ========================================= */
+:root {
+    --primary-color: #f37021; /* ปรับให้ตรงกับสีแบรนด์จาก about.css */
+    --text-dark: #111111;
+    --bg-light: #fdfdfd;
+}
+
+body {
+    margin: 0;
+    font-family: 'Prompt', sans-serif; /* เปลี่ยนเป็นฟอนต์ Prompt */
+    background: var(--bg-light);
+    color: #333;
+
+    
+}
+
+.hero-title, 
+.hero h1, 
+.hero h2 {
+    font-family: 'Prompt', sans-serif;
+    font-weight: 700; /* ทำให้ตัวหนาขึ้น */
+    /* ถ้าตัวหนังสือในจอเบียดกันไป ลองเพิ่ม line-height ดูครับ */
+    line-height: 1.4; 
+}
+
+/* --- Dark Mode Base --- */
+body.dark-mode,
+body[data-theme="dark"] {
+    background: #1a1a1a;
+    color: #f5f5f5;
+}
+
+/* =========================================
+   Hero & Section
+   ========================================= */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
+                url('../../Faculty/iot/img_iot/540147504_1074422551571621_8525143473858655158_n.jpg') center/cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #ffffff;
+    font-size: 4.5rem; /* เพิ่มขนาดอิงจาก Hero ของ about.css */
+    font-weight: 800;
+}
+
+.section h2 {
+    text-align: center;
+    margin: 60px auto 40px auto;
+    font-size: 2.5rem; /* ปรับให้เท่ากับ .section-title */
+    font-weight: 700;
+    color: var(--text-dark);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+body.dark-mode .section h2,
+body[data-theme="dark"] .section h2 {
+    color: #ffffff;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px; /* ปรับให้สั้นลงเพื่อความสวยงาม */
+    height: 4px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* =========================================
+   Grid & Cards
+   ========================================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px; /* เพิ่ม padding ให้ไม่ชิดขอบจอเกินไป */
+}
+
+.card {
+    background: #fff; 
+    padding: 20px; 
+    border-radius: 15px; 
+    text-align: center;
+    cursor: pointer; 
+    transition: 0.3s; 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.card:hover { 
+    transform: translateY(-5px); 
+    border: 2px solid var(--primary-color); 
+}
+
+.card img { 
+    width: 100%; 
+    height: 300px; 
+    object-fit: cover; 
+    border-radius: 10px; 
+}
+
+/* --- Dark Mode Cards --- */
+body.dark-mode .card,
+body[data-theme="dark"] .card {
+    background: #222222;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    border: 2px solid transparent;
+}
+body.dark-mode .card:hover,
+body[data-theme="dark"] .card:hover {
+    border: 2px solid var(--primary-color);
+}
+
+/* =========================================
+   Overlay / Modal
+   ========================================= */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.overlay-card {
+    width: 850px;
+    max-width: 90vw; /* กันล้นจอในมือถือ */
+    max-height: 90vh; /* เพิ่ม: จำกัดความสูงไม่ให้เกินหน้าจอ */
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    animation: slideUp 0.3s ease;
+    display: flex; /* เพิ่ม: สั่งให้กล่องเรียงแบบ Flex */
+    flex-direction: column; /* เพิ่ม: ให้เรียงจากบนลงล่าง */
+}
+/* --- Dark Mode Overlay --- */
+body.dark-mode .overlay-card,
+body[data-theme="dark"] .overlay-card {
+    background: #1a1a1a;
+    border: 1px solid #333;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.overlay-header {
+    background: var(--primary-color);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    flex-shrink: 0; /* เพิ่ม: บังคับไม่ให้ส่วนหัวหดตัว */
+}
+
+.overlay-body {
+    padding: 35px;
+    display: flex;        
+    gap: 40px;            
+    align-items: flex-start;
+    overflow-y: auto;
+}
+
+/* ฝั่งซ้าย: กล่องรูปภาพ */
+.ov-img-container {
+    flex: 0 0 280px;      
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+body.dark-mode .ov-img-container,
+body[data-theme="dark"] .ov-img-container {
+    background: #222;
+    border-color: #333;
+}
+
+#ov-sub-name {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 1.05rem; /* ปรับขนาดเนื้อหา */
+    line-height: 1.8;
+    color: #555;
+}
+
+body.dark-mode #ov-sub-name,
+body[data-theme="dark"] #ov-sub-name {
+    border-top-color: #333;
+    color: #bbb;
+}
+
+/* ฝั่งขวา: รายละเอียดข้อความ */
+.overlay-text {
+    flex: 1;              
+    text-align: left;      
+}
+
+.name-th-large {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.name-en-sub {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+body.dark-mode .name-th-large,
+body[data-theme="dark"] .name-th-large { color: #fff; }
+
+body.dark-mode .name-en-sub,
+body[data-theme="dark"] .name-en-sub { color: #ccc; }
+
+.overlay-text strong {
+    display: block;
+    margin-top: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--primary-color);
+    width: fit-content;
+    padding-bottom: 3px;
+}
+
+body.dark-mode .overlay-text strong,
+body[data-theme="dark"] .overlay-text strong {
+    color: #fff;
+}
+
+.overlay-text ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+}
+
+.overlay-text li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+body.dark-mode .overlay-text li,
+body[data-theme="dark"] .overlay-text li {
+    color: #bbb;
+}
+
+/* ใส่ Bullet สีส้มให้ลิสต์ */
+.overlay-text li::before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+/* Responsive สำหรับมือถือ */
+@media (max-width: 768px) {
+    .overlay-body {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+    .ov-img-container {
+        flex: auto;
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* =========================================
+   Overlay / Modal (Update)
+   ========================================= */
+/* ... (existing rules) ... */
+
+/* Left column: Image Container */
+.ov-img-container {
+    flex: 0 0 280px;      
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    /* Update: Ensure full width for image */
+    width: 100%;
+    /* Add a clean look for mobile in the next step */
+    overflow: hidden;
+}
+
+/* === ADD THESE NEW RULES === */
+
+/* Ensure the image itself is responsive within the container */
+.ov-img-container img {
+    width: 100%; /* Fill the container's width (280px or less on mobile) */
+    height: 100%; /* Fill the container's height (which will be defined by its parent flex) */
+    object-fit: cover; /* Cover the area without stretching */
+    border-radius: 10px;
+    margin: 0;
+}
+
+/* === UPDATE THE EXISTING SUB-NAME RULE === */
+#ov-sub-name {
+    margin-top: 15px;
+    /* Remove padding and border from here as it's no longer the only text */
+    padding-top: 0;
+    border-top: none;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #555;
+    /* Ensure it doesn't get crammed by the image rule */
+    z-index: 1;
+}
+
+/* ... (rest of the existing rules) ... */

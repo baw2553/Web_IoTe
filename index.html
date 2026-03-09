@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT and Information Engineering</title>
+    <link rel="icon" type="image/png" href="image/Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html"><div class="logo-container">
+            <img src="image/Logo.png" alt="IOTE Logo" class="logo-img">
+            <div class="logo-text">IoT and Information Engineering, KMITL</div>
+        </div></a>
+
+        <button id="menu-toggle" class="menu-toggle" aria-label="เปิด/ปิดเมนู">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="index.html">หน้าหลัก</a></li>
+            <li><a href="About/about.html">About iot</a></li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'acadDropdown')">
+                    Academics <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="acadDropdown" class="dropdown-content">
+                    <a href="Academics/IoT/IoT.html">IoT System and Information</a>
+                    <a href="Academics/Dual/Dual.html">Dual Degree</a>
+                    <a href="Academics/Continuing/cont.html">วศ.บ.วิศวกรรมคอมพิวเตอร์...</a>
+                </div>
+            </li>
+            <li><a href="Admission/admiss.html">Admission</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'FacultyDropdown')">
+                    Faculty <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="FacultyDropdown" class="dropdown-content">
+                    <a href="Faculty/iot/professor.html">IoT System and Information</a>
+                    <a href="Faculty/phy/phy.html">Industrial Physics</a>
+                </div>
+            </li>
+            <li><a href="performance/cy.html">Performance</a></li>
+        </ul>
+    </nav>
+
+    <div class="news-carousel-container">
+        <div class="news-carousel-slide">
+            <img src="image/K-Engineering World tour 2025 (3).jpg" alt="แบนเนอร์ข่าวที่ 2">
+            <a href="https://www.mytcas.com/"><img src="image/K-Engineering World tour 2025 (4).jpg" alt="แบนเนอร์ข่าวที่ 3"></a>
+            <a href="game/game.html"><img src="image/K-Engineering World tour 2025 (6).jpg" alt="แบนเนอร์ข่าวที่ 6"></a>
+            <a href="forum/forum.html"><img src="image/K-Engineering World tour 2025 (8).jpg" alt="แบนเนอร์ข่าวที่ 7"></a>
+            <img src="image/K-Engineering World tour 2025_1.jpg" alt="แบนเนอร์ข่าวที่ 5">
+            <a href="tutorial/tutorial.html"><img src="image/K-Engineering World tour 2025 (9).jpg" alt="แบนเนอร์ข่าวที่ 8"></a>
+            <img src="image/K-Engineering World tour 2025 (2).jpg" alt="แบนเนอร์ข่าวที่ 1">
+            <img src="image/K-Engineering World tour 2025 (5).jpg" alt="แบนเนอร์ข่าวที่ 4">
+        </div>
+
+        <button class="news-btn prev-news-btn" id="prevNewsBtn">&#10094;</button>
+        <button class="news-btn next-news-btn" id="nextNewsBtn">&#10095;</button>
+    </div>
+
+    <div class="countdown-container">
+        <h3 class="countdown-title">⏳ ประกาศผู้มีสิทธิ์เข้าศึกษา TCAS 1</h3>
+
+        <div id="countdown" class="countdown-timer">
+            <div class="time-box"><span id="days">00</span><span class="time-label">วัน</span></div>
+            <div class="time-box"><span id="hours">00</span><span class="time-label">ชั่วโมง</span></div>
+            <div class="time-box"><span id="minutes">00</span><span class="time-label">นาที</span></div>
+            <div class="time-box"><span id="seconds">00</span><span class="time-label">วินาที</span></div>
+        </div>
+
+        <div id="countdown-expired" class="countdown-expired" style="display: none;">
+            ❌ รอทำการอัพเดท ประกาศผู้มีสิทธิ์เข้าศึกษา TCAS 2
+        </div>
+    </div>
+
+    <header class="hero">
+        <h1>Department of IoT and Information<br>Engineering</h1>
+        <h2>ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ</h2>
+        <a href="About/about.html" class="btn-primary">About IoTE</a>
+    </header>
+
+    <section class="strengths-section">
+        <h2>Our Core Strengths</h2>
+        <div class="cards-container">
+            <div class="card">
+                <i class="fas fa-trophy card-icon"></i>
+                <h3>กิจกรรมโดดเด่น</h3>
+                <p>ภาควิชาของเราจัดกิจกรรมพิเศษตลอดทั้งปี เช่น ค่ายมัธยมและเวิร์กช็อปเพื่อพัฒนาทักษะในด้าน IoT และนวัตกรรม</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chalkboard-user card-icon"></i>
+                <h3>อาจารย์ผู้เชี่ยวชาญ</h3>
+                <p>เรียนรู้จากทีมอาจารย์ผู้เชี่ยวชาญในหลากหลายสาขา พร้อมด้วยงานวิจัยระดับแนวหน้าที่ได้รับการยอมรับ</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-award card-icon"></i>
+                <h3>โอกาสที่ไม่มีที่สิ้นสุด</h3>
+                <p>สร้างโอกาสใหม่ ๆ ผ่านเครือข่ายของเรา ทั้งในด้านการศึกษา การวิจัย และการฝึกงานในอุตสาหกรรมจริง</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-cube card-icon"></i>
+                <h3>โครงการเด่น</h3>
+                <p>ร่วมเป็นส่วนหนึ่งในโครงการที่ขับเคลื่อนนวัตกรรม เช่น ระบบอัจฉริยะสำหรับการเกษตรและการพัฒนา Smart City</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="academics-section" id="academics">
+        <h2>Academics</h2>
+        <div class="cards-container">
+            <div class="card">
+                <i class="fas fa-graduation-cap card-icon"></i>
+                <p class="deg-title">BACHELOR OF ENGINEERING<br>(IOT SYSTEM AND INFORMATION)</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-graduate card-icon"></i>
+                <p class="deg-title">DUAL DEGREE (B.ENG.<br>IOT SYSTEM AND INFORMATION + B.SC.<br>INDUSTRIAL PHYSICS)</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-globe card-icon"></i>
+                <p class="deg-title">BACHELOR OF ENGINEERING<br>(COMPUTER AND IOT)<br>(Continuing program)</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-medal card-icon"></i>
+                <p class="deg-title">MASTER OF<br>ENGINEERING and DOCTOR OF<br>PHILOSOPHY (AIoT AND INFORMATION)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="community-section">
+        <div class="community-top" style="display: flex; gap: 40px; align-items: center;">
+    
+    <div class="community-title" style="flex: 1; text-align: left;">
+        <h2>IoT Innovations</h2>
+        <p style="margin-top: 20px; font-size: 16px; line-height: 1.6; color: #888;">
+            ชมผลงานและโปรเจกต์นวัตกรรมที่สร้างสรรค์โดยนักศึกษาภาควิชาวิศวกรรมไอโอทีและสารสนเทศ (IoTE) 
+            เรียนรู้การลงมือทำจริง ตั้งแต่การต่อวงจร, ระบบ Smart Home, ไปจนถึงอุปกรณ์ IoT ที่สามารถนำไปต่อยอดได้ในอนาคต
+        </p>
+    </div>
+
+    <div class="carousel-container" style="flex: 1;">
+        <div class="carousel-slide">
+            <img src="image/project1.jpg" alt="IoT Project 1">
+            <img src="image/project2.jpg" alt="IoT Project 2">
+            <img src="image/project3.jpg" alt="IoT Project 3">
+            <img src="image/project4.jpg" alt="IoT Project 4">
+        </div>
+        
+        <button class="carousel-btn prev-btn" id="prevBtn">&#10094;</button>
+        <button class="carousel-btn next-btn" id="nextBtn">&#10095;</button>
+    </div>
+
+</div>
+        
+        <div class="video-container">
+            <div class="video-wrapper">
+               <iframe width="560" height="315" 
+               src="https://www.youtube.com/embed/yVEvCxeXNRc?si=RI7xdBQxiCzsg2j3" 
+               title="YouTube video player" frameborder="0" 
+               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+               referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <h2 class="contact-header">Contact</h2>
+        <div class="contact-grid">
+            
+            <div class="contact-col">
+                <h3>Department of IoT and<br>Information Engineering</h3>
+                <p class="desc">ภาควิชาวิศวกรรมไอโอทีและสารสนเทศ คณะวิศวกรรมศาสตร์<br>สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+                <div class="address-box">
+                    <i class="fas fa-map-marker-alt pin-icon"></i>
+                    <p>ชั้น 12 อาคารเรียนรวม 12 ชั้น<br>เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง<br>กรุงเทพมหานคร 10520</p>
+                </div>
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <strong>Email</strong>
+                        <p>iote@kmitl.ac.th<br>pikulkaew.ta@kmitl.ac.th</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Phone</strong>
+                        <p>02-329-8000 ext.5129<br>02-329-8301 ext.235</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Line</strong>
+                        <p>@iotekmitl</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Facebook</strong>
+                        <p>www.facebook.com/IOTE.KMITL</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-col">
+                <h3>Industrial Physics</h3>
+                <p class="desc">หลักสูตรฟิสิกส์อุตสาหกรรม ภาควิชาฟิสิกส์ คณะวิทยาศาสตร์<br>สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+                <div class="address-box">
+                    <i class="fas fa-map-marker-alt pin-icon"></i>
+                    <p>ตึกจุฬาภรณ์วลัยลักษณ์ 1 ชั้น 3<br>เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง<br>กรุงเทพมหานคร 10520</p>
+                </div>
+                <div class="contact-details">
+                    <div class="detail-item">
+                        <strong>Email</strong>
+                        <p>SCIENCE@kmitl.ac.th</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Phone</strong>
+                        <p>02-329-8000 ext.6214</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Line</strong>
+                        <p>@842xiplr</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Facebook</strong>
+                        <p>https://www.facebook.com/<br>physiotkmitl<br>https://facebook.com/SciKmitl</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <a href="game/game.html" class="floating-game-btn" title="IoTE Runner">
+    <i class="fas fa-gamepad"></i></a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
+    <script src="script.js"></script>
+    <a href="forum/forum.html" class="floating-forum-btn" title="Threads">
+    <i class="fas fa-envelope"></i></a>
+    <a href="tutorial/tutorial.html" class="floating-info-btn" title="Study Simulator">
+    <i class="fas fa-book"></i> </a>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoTE Runner</title>
+    <link rel="icon" type="image/png" href="../image/Logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="game.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <nav id="navbar">
+        <a href="../index.html"><div class="logo-container">
+            <img src="../image/Logo.png" alt="IOTE Logo" class="logo-img">
+            <div class="logo-text">IoT and Information Engineering, KMITL</div>
+        </div></a>
+
+        <button id="menu-toggle" class="menu-toggle" aria-label="เปิด/ปิดเมนู">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul class="nav-links">
+            <li><a href="../index.html">หน้าหลัก</a></li>
+            <li><a href="../About/about.html">About iot</a></li>
+
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'acadDropdown')">
+                    Academics <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="acadDropdown" class="dropdown-content">
+                    <a href="../Academics/IoT/IoT.html">IoT System and Information</a>
+                    <a href="../Academics/Dual/Dual.html">Dual Degree</a>
+                    <a href="../Academics/Continuing/cont.html">วศ.บ.วิศวกรรมคอมพิวเตอร์...</a>
+                </div>
+            </li>
+            <li><a href="../Admission/admiss.html">Admission</a></li>
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn" onclick="toggleMenu(event, 'FacultyDropdown')">
+                    Faculty <i class="fas fa-caret-down"></i>
+                </a>
+                <div id="FacultyDropdown" class="dropdown-content">
+                    <a href="../Faculty/iot/professor.html">IoT System and Information</a>
+                    <a href="../Faculty/phy/phy.html">Industrial Physics</a>
+                </div>
+            </li>
+            <li><a href="../performance/cy.html">Performance</a></li>
+        </ul>
+    </nav>
+
+    <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="game-ui-wrapper">
+
+        <div id="factOverlay">
+            <div class="fact-title">💡 IOTE TRICK</div>
+            <div class="fact-desc" id="factTextContent"></div>
+        </div>
+        
+        <div class="hud hidden" id="gameHud">
+            <div class="player-info">
+                <img id="hudAvatar" src="" alt="Avatar" width="30" height="30" style="border-radius:50%; vertical-align:middle; margin-right:5px; object-fit: cover;">
+                <span id="hudName">Player</span>
+            </div>
+            <div class="score-info">
+                ระยะทาง: <span id="distanceScore">0</span> ม. | คะแนนรวม: <span id="totalScore">0</span>
+                <span id="heartDisplay" style="margin-left: 15px; color: #dc3545;"></span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas" width="800" height="400" class="hidden"></canvas>
+
+            <div id="bossWarningOverlay" class="overlay hidden" style="pointer-events: none; z-index: 9000; background: rgba(0,0,0,0.5);">
+                <div style="background: rgba(220, 38, 38, 0.9); color: white; padding: 20px 40px; font-size: 28px; font-weight: bold; border-radius: 12px; border: 4px solid #fff; box-shadow: 0 0 20px rgba(255,0,0,0.8); text-align: center; font-family: 'Prompt', sans-serif;">
+                    ⚠️ WARNING ⚠️<br>
+                    <span id="bossNameText" style="font-size: 18px; color: #ffeb3b;">บอสกำลังปรากฏตัว!</span>
+                </div>
+            </div>
+
+            <div id="glitchOverlay" class="hidden" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 8000; mix-blend-mode: exclusion; background: repeating-linear-gradient(0deg, rgba(0,0,0,0.15), rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);"></div>
+
+            <div id="loginScreen" class="overlay">
+                <div class="panel" id="loginPanel">
+                    <h2>กำลังตรวจสอบข้อมูล...</h2>
+                </div>
+            </div>
+
+            <div id="questionScreen" class="overlay hidden">
+                <div class="panel quiz-panel">
+                    <h2 id="qTitle">🤔 Engineering Quiz!</h2>
+                    <p id="qText" class="question-text"></p>
+                    <div id="qButtons" class="choices-grid"></div>
+                    <div id="qResult" class="hidden">
+                        <p id="qFeedback" class="feedback-text"></p>
+                        <button onclick="resumeGame()" class="btn-primary">ลุยต่อ 🏃</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="gameOverScreen" class="overlay hidden">
+                <div class="panel leaderboard-panel">
+                    <h2>Game Over!</h2>
+                    <p>คะแนนของคุณ: <strong id="finalScore" style="color:#f37b21; font-size:24px;">0</strong></p>
+                    
+                    <h3>🏆 Top 10 Leaderboard</h3>
+                    <div class="table-container">
+                        <table class="leaderboard-table">
+                            <thead><tr><th>อันดับ</th><th>ผู้เล่น</th><th>คะแนน</th></tr></thead>
+                            <tbody id="leaderboardBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div style="margin-top: 20px;">
+                        <button onclick="restartGame()" class="btn-primary">เล่นอีกครั้ง</button>
+                        <a href="../index.html" class="btn-secondary">กลับหน้าหลัก</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls-hint hidden" id="controlsHint">กด <b>Spacebar</b> หรือ <b>คลิกหน้าจอ</b> เพื่อกระโดด (กระโดด 2 ชั้นได้!)</div>
+        </div>
+    </div>
+    <script src="../script.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
